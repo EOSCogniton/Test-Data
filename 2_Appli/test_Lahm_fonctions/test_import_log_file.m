@@ -2,14 +2,16 @@
 
 clear
 
-% format shortg
-% c = clock;
-% c(end);
+format shortg
+c = clock;
 
 % time(ms):1  Ax(g):9  Ay(g):10  Az(g):11  Yaw(°/s):12  Pitch(°/s):13  Roll(°/s):14  Lattitude(°):32
 % longitude(°):33  speed(mph):34  height(ft):35  distance(ft):39
 
-raw  = dlmread_empty('rc_0.log',',',1,0,NaN);
+raw  = dlmread_empty('rc_1.log',',',1,0,NaN);
+
+time = (raw(:,1)-raw(1,1))*10^-3;
+time(end)
 
 data = [];
 for i= 1:length(raw)
@@ -18,6 +20,7 @@ for i= 1:length(raw)
     end
 end
 
+fin = length(raw);
 % clear data_raw
 
 indic = 1;
@@ -42,14 +45,17 @@ data = [data(:,1:31) data(:,40:end)];
 
 clear data_raw
 
-% b = clock;
-% b(end)-c(end)
+b = clock;
+b(end)-c(end);
+
+time = (data_gps(:,1)-data_gps(1,1))*10^-3;
+time(end);
 
 %%
 
 figure
-plot(data_gps(:,6), data_gps(:,9))
+plot((data_gps(:,1)-data_gps(1,1))*10^-3, data_gps(:,9))
 
-%%
-[X, Y] = lat_longi2X_Y(data_gps(:,2), data_gps(:,3));
-track_plot(X, Y, data_gps(:,7))
+% %%
+% [X, Y] = lat_longi2X_Y(data_gps(:,2), data_gps(:,3));
+% track_plot(X, Y, data_gps(:,7))
