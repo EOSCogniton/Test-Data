@@ -42,6 +42,9 @@ Toute les données sont stockée sous forme de liste, dont voici les noms :
         Lambda %Retour de la sonde lambda
         TPS %Déplacement de la guillotine en % (0 pour fermé et 100 pour ouvert)
         Vbat %tension de la batterie
+	Advance %avance à l'allumage en degré
+	Injection %temps d'injection en ms
+	FuelCons %conso d'essence en L/100 km (pas sur de la précision de ce truc)
         Lap % numéro du tour précédent
         LapTime %liste tel que LapTime(i) donne le temp du i-ème tour
         Sector %secteur dans lequel ce trouve la voiture ??
