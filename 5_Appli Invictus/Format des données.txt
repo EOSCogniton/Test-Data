@@ -1,0 +1,53 @@
+Toute les données sont stockée sous forme de liste, dont voici les noms :
+	Time % temps depuis le début de l'enregistrement (en s)
+        Tacc % temps auquels les données en 50Hz sont enregistrées (en s)
+        Tgps % temps auquels les données gps sont enregistrées (en s)
+        X % position gps remise en m
+        Y % position gps remise en m
+        AccelX % en G
+        AccelY % en G
+        AccelZ % en G
+        Yaw % en deg/s
+        Pitch % en deg/s
+        Roll % en deg/s
+        Latitude % en °
+        Longitude % en °
+        Speed % en km
+        distance % en m
+        Altitude % en m
+        AccelX_GPS % accel interpolée au temps des donées gps pour pouvoir faire des tracés type (accel / distance)
+        AccelY_GPS % en G
+        AccelZ_GPS % en G
+        Yaw_GPS % en deg/s
+        Pitch_GPS % en deg/s
+        Roll_GPS % en deg/s
+        Steering % Angle de rotation du volant en radian ?
+        XFL % déplacement des suspensions en mm
+        XFR
+        XRL
+        XRR
+        WFL %Vitesse de rotation des roues en rad/s
+        WFR
+        WRL
+        WRR
+        BPF %Pression dans le circuit de freinage en bar
+        BPR
+        RPM %vitesse de rotation du moteur en tour/min
+        Gear %Vitesse engagée (0 pour neutre)
+        Pair %pression dans le plenum en bar
+        Tair %Température dans le plenum en °c
+        Twater %Température d'eau en °c
+        Poil %Pression d'huile moteur
+        Pfuel %Pression dans le circuit d'essence au niveau des injecteurs
+        Lambda %Retour de la sonde lambda
+        TPS %Déplacement de la guillotine en % (0 pour fermé et 100 pour ouvert)
+        Vbat %tension de la batterie
+	Advance %avance à l'allumage en degré
+	Injection %temps d'injection en ms
+	FuelCons %conso d'essence en L/100 km (pas sur de la précision de ce truc)
+        Lap % numéro du tour précédent
+        LapTime %liste tel que LapTime(i) donne le temp du i-ème tour
+        Sector %secteur dans lequel ce trouve la voiture ??
+        SectorTime %temps du secteur précédent ??
+        ElapsedTime %temps écoulé depuis le début du tour
+        CurrentLap %tour en cours
