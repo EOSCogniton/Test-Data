@@ -16,3 +16,6 @@ for k=1:n %on parcours les colonnes
     struct(k).Period = str2double(element(i_s(4)+1:end));
     struct(k).Data = data(:,k);
 end
+
+%Pour obtenir la ligne dans struct correspondant aux données "D", écrire
+%find(struct=="D")
