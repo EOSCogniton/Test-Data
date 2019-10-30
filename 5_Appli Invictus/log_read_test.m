@@ -1,3 +1,4 @@
+%fichier test servant de référence pour 'log2struct'
 fid = fopen('test.log');%ouvre le fichier
 first_Line = fgets(fid);%lit la première ligne
 fclose(fid); % ferme le fichier
@@ -9,12 +10,12 @@ for k=1:n %on parcours les colonnes
     element = first_Line(i_v(k):i_v(k+1)-1); %str de la première ligne k_ième colonne
     i_g = find(element=='"'); % indice des guillemets dans l'élément
     i_s = find(element=='|'); % indice des séparateurs dans l'élément
-    struct(k).Name = element(i_g(1)+1:i_g(2)-1)  ;
-    struct(k).Unit = element(i_g(3)+1:i_g(4)-1); 
-    struct(k).Min = str2double(element(i_s(2)+1:i_s(3)-1));
-    struct(k).Max = str2double(element(i_s(3)+1:i_s(4)-1));
-    struct(k).Period = str2double(element(i_s(4)+1:end));
-    struct(k).Data = data(:,k);
+    dstruct(k).Name = element(i_g(1)+1:i_g(2)-1)  ;
+    dstruct(k).Unit = element(i_g(3)+1:i_g(4)-1); 
+    dstruct(k).Min = str2double(element(i_s(2)+1:i_s(3)-1));
+    dstruct(k).Max = str2double(element(i_s(3)+1:i_s(4)-1));
+    dstruct(k).Period = str2double(element(i_s(4)+1:end));
+    dstruct(k).Data = data(:,k);
 end
 
 %Pour obtenir la ligne dans struct correspondant aux données "D", écrire
