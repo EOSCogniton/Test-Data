@@ -4,7 +4,7 @@ function data_struct = log2struct(datapath)
     fid = fopen(datapath);%ouvre le fichier
     first_Line = fgets(fid);%lit la première ligne
     fclose(fid); % ferme le fichier
-    i_v = [1 find(first_Line==',')]; %Liste conetant les indices des virgules avec un 1 ajouté devant
+    i_v = [1 find(first_Line==',')]; %Liste contenant les indices des virgules avec un 1 ajouté devant
     n = length(i_v); %compte le nombre de colonne
     i_v = [i_v length(first_Line)];
     data = dlmread_empty(datapath,',',1,0,NaN); %MAtrice contenant toutes les valeur numérique du fichier

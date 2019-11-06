@@ -1,4 +1,4 @@
-function index = get_data_index(data_struct,name)
+function data = get_data(data_struct,name)
     s = size(data_struct);
     n= s(2); %s(2) correspond au nombre de noms de donnés
     index = NaN;
@@ -7,4 +7,6 @@ function index = get_data_index(data_struct,name)
             index = k;
         end
     end
+    data = data_struct(index);
 end
+
