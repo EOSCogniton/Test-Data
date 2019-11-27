@@ -1,5 +1,0 @@
-function TF = freq2time(data_struct,freq)%Fonction permettant de générer une liste de temps à la fréquence F
-    Utc = get_data(data_struct, 'Utc');
-    
-end
-

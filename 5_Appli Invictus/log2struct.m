@@ -27,7 +27,7 @@ function data_struct = log2struct(datapath)
         
         if index >2 && isempty(find(strcmp({data_struct.Name},Pname)==1,1))
             data_struct(index+1).Name = Pname;
-            data_struct(index+1).Unit = 'ms'; 
+            data_struct(index+1).Unit = 's'; 
             data_struct(index+1).Min = 0;
             data_struct(index+1).Max = 0;
             data_struct(index+1).Frequency = str2double(element(i_s(4)+1:end));
