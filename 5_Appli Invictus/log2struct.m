@@ -36,7 +36,7 @@ function data_struct = log2struct(datapath)
         end
         
         d = data(:,k);
-        data_struct(index).Data = d(~isnan(data(:,k)));
+        data_struct(index).Data = d(~isnan(data(:,k))); 
         
     end           
 end

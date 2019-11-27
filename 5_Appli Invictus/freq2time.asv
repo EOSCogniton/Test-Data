@@ -1,11 +1,5 @@
 function TF = freq2time(data_struct,freq)%Fonction permettant de générer une liste de temps à la fréquence F
     Utc = get_data(data_struct, 'Utc');
-    Utc_freq = 50;
-    step = Utc_freq/freq;
-    n = numel(Utc)/step;
-    TF=[];
-    for i=1:n
-        TF = [TF Utc(i*step)];
-    end
+    
 end
 
