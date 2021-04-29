@@ -2,7 +2,7 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf('/Users/bacs/Downloads/7_Invictus/Session roulage Fiabilite - Transpolis 09 04 21/DTA/Transpolis 09 04 21 - Run 4 MJT.Dat');
+filename = sprintf('/Users/bacs/Downloads/7_Invictus/Session roulage Fiabilite - Transpolis 09 04 21/DTA/Transpolis 09 04 21 - Run 6 MJT.Dat');
 T = readtable(filename); 
 
 N = height(T);
@@ -34,7 +34,7 @@ end
     
 d = (dl + dr)/2/1000
 
-%% Essai carburant consommé
+%% Essai carburant consommé, moyenne conso moyenne
 
 conso = str2double(strrep(table2array(T(1:N,18)),',','.'));
 cons_adj = [];
@@ -47,5 +47,15 @@ for i = 1:N
 end
 
 nb = length(cons_adj);
-sum_cons/nb %consommation moyenne (L/100km)
+sum_cons/nb*d/100 %consommation moyenne (L/100km)
+
+%% Conso, somme des quantités injectées
+
+inj = str2double(strrep(table2array(T(1:N,16)),',','.'));
+rpds = table2array(T(1:N,3))/60*tau; %tours par déciseconde (0,1s)
+
+inj = inj .* rpds * 2; %temps d'injection par ds en ms
+total_inj = sum(inj)/1000*3.87/1000
+
+
 
