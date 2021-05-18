@@ -4,12 +4,21 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf('/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/4_Optimus/23_06_19/JMN/rc_1.log');
+filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/Session d'essais validation aero - Valbonne 07 05 21/RaceCapture/rc_0.log");
 T = readtable(filename);
 
 N = height(T);
 
 time = (table2array(T(1:N,1))-5383)./1000;
+
+time5 = [] %Table du temps pour les capteurs à 10Hz
+for i = 1:N
+    if mod(i,5) == 0
+        time5(end+1) = time(i);
+    end
+end
+
+Distance_parcourue = T(end,56)
 
 %% Distance 
 
@@ -34,7 +43,7 @@ plot(time,ay,'g');
 hold on;
 plot(time,az,'b');
 legend("ax","ay","az");
-ylabel("acceleration (m/s^2)");
+ylabel("acceleration (g ?)");
 xlabel("temps (s)")
 
 figure
@@ -70,10 +79,45 @@ for i = 1:N
     end
 end
 
+%% Vitesse
+vDTA = table2array(T(1:N,24));
+vRC = table2array(T(1:N,44));
+SpeedDTA = [];
+SpeedRC = [];
 
+for i = 1:N
+    if mod(i,5) == 0
+        SpeedDTA(end+1) = vDTA(i);
+        SpeedRC(end+1) = vRC(i);
+    end
+end
+    
+figure
+plot(time5,SpeedDTA,'r');
+hold on;
+plot(time5,SpeedRC,'g');
+legend("SpeedDTA","SpeedRC");
+ylabel("Vitesse (km/h)");
+xlabel("temps (s)")
+
+%% Volant vs accélération latérale
+VolantRC = table2array(T(1:N,9));
+Steering = [];
+AccelY5 = [];
+
+for i = 1:N
+    if mod(i,5) == 0
+        Steering(end+1) = VolantRC(i)/70;
+        AccelY5(end+1) = (ay(i) + ay(i-1) + ay(i-2) + ay(i-3) + ay(i-4))/5;
+    end
+end
 
     
-    
-    
-    
-    
+figure
+plot(time5,Steering,'r');
+hold on;
+plot(time5,AccelY5,'g');
+legend("Steering","AccelY5");
+title("Ay vs Steering");
+xlabel("temps (s)")
+
