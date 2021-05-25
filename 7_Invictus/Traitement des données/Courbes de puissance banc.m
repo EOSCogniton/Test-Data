@@ -284,23 +284,24 @@ legend("Puissance v1.3","Puissance v3.4", "Couple v1.3", "Couple v3.4","Location
 figure
 grid on
 hold on
-plot(RPM_11,Pengine_11) %v1.3 session 1
-plot(RPM_12,Pengine_12) %v1.3 session 1
-plot(RPM_21,Pengine_21) %v1.3 session 2
+%plot(RPM_11,Pengine_11) %v1.3 session 1
+%plot(RPM_12,Pengine_12) %v1.3 session 1
+%plot(RPM_21,Pengine_21) %v1.3 session 2
 %plot(RPM_22,Proue_22) %v1.3 session 2
 %plot(RPM_23,Proue_23) %v1.3 session 2
-plot(RPM_24,Pengine_24) %v2.0 session 2
-%plot(RPM_25,Pengine_25) %v2.0 session 2
-plot(RPM_26,Pengine_26) %v2.1 session 2
-%plot(RPM_27,Proue_27) %v2.1 session 2
-%plot(RPM_28,Proue_28) %v2.2 session 2
-%plot(RPM_29,Proue_29) %v3.0 session 2
+%plot(RPM_24,Proue_24) %v2.0 session 2
+plot(RPM_25,Proue_25) %v2.0 session 2
+%plot(RPM_26,Proue_26) %v2.1 session 2
+plot(RPM_27,Proue_27) %v2.1 session 2
+plot(RPM_28,Proue_28) %v2.2 session 2
+plot(RPM_29,Proue_29) %v3.0 session 2
 %plot(RPM_210,Proue_210) %v3.0 session 2
 %plot(RPM_31,Proue_31) %v3.0 session 3
 %plot(RPM_32,Proue_32) %v3.0 session 3
 %plot(RPM_33,Proue_33) %v3.0 session 3
 %plot(RPM_34,Proue_34) %v3.0 session 3
-%plot(RPM_35,Proue_35) %v3.4 session 3
+plot(RPM_35,Proue_35) %v3.4 session 3
 %plot(RPM_36,Proue_36) %v3.4 session 3
 xlabel("RPM (tr/min)")
 ylabel("Puissance (ch)/Couple (N.m)")
+legend("v2.0","v2.1","v2.2","v3.0","v3.4")
