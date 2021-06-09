@@ -4,21 +4,22 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/Session d'essais validation aero - Valbonne 07 05 21/RaceCapture/rc_0.log");
+filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/Session d'essais premiers reglages LAS - Transpolis 08 06 21/Log RC/rc_8.log");
 T = readtable(filename);
 
 N = height(T);
 
 time = (table2array(T(1:N,1))-5383)./1000;
 
-time5 = [] %Table du temps pour les capteurs à 10Hz
+time5 = []; %Table du temps pour les capteurs à 10Hz
 for i = 1:N
     if mod(i,5) == 0
         time5(end+1) = time(i);
     end
 end
 
-Distance_parcourue = T(end,56)
+Distance_parcourue = table2array(T(end-5:end,56))
+
 
 %% Distance 
 
