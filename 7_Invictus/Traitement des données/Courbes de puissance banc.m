@@ -305,3 +305,44 @@ plot(RPM_35,Proue_35) %v3.4 session 3
 xlabel("RPM (tr/min)")
 ylabel("Puissance (ch)/Couple (N.m)")
 legend("v2.0","v2.1","v2.2","v3.0","v3.4")
+
+%% Puissance moteur ou couple à la roue ?
+RPM = RPM_35; %On choisit les données du tir 5 de la 3è séance, représentatif de la carto actuelle
+Puis = Pengine_35;
+r = 0.235; %rayon de la roue
+rapSec = 2.69; %rapport de transmission secondaire
+rap1 = 5.4105; %premier rapport de vitesse
+rap2 = 4.222;
+rap3 = 3.519;
+rap4 = 3.048;
+rap5 = 2.753;
+rap6 = 2.550;
+
+figure
+title("Puissance moteur en fonction de la vitesse véhicule pour des rapports de boite différents");
+grid on
+hold on
+plot(RPM/rap1/rapSec/60*(2*pi*r)*3.6,Puis);
+plot(RPM/rap2/rapSec/60*(2*pi*r)*3.6,Puis);
+plot(RPM/rap3/rapSec/60*(2*pi*r)*3.6,Puis);
+plot(RPM/rap4/rapSec/60*(2*pi*r)*3.6,Puis);
+plot(RPM/rap5/rapSec/60*(2*pi*r)*3.6,Puis);
+plot(RPM/rap6/rapSec/60*(2*pi*r)*3.6,Puis);
+legend("1ère","2ème","3ème","4ème","5ème","6ème")
+xlabel("Vitesse (km/h)")
+ylabel("Puissance moteur (ch)")
+%%
+Cmoteur = Puis*745.7./(RPM*2*pi/60);
+figure
+title("Couple à la roue en fonction de la vitesse véhicule pour des rapports de boite différents");
+grid on
+hold on
+plot(RPM/rap1/rapSec/60*(2*pi*r)*3.6,Cmoteur*rapSec*rap1);
+plot(RPM/rap2/rapSec/60*(2*pi*r)*3.6,Cmoteur*rapSec*rap2);
+plot(RPM/rap3/rapSec/60*(2*pi*r)*3.6,Cmoteur*rapSec*rap3);
+plot(RPM/rap4/rapSec/60*(2*pi*r)*3.6,Cmoteur*rapSec*rap4);
+plot(RPM/rap5/rapSec/60*(2*pi*r)*3.6,Cmoteur*rapSec*rap5);
+plot(RPM/rap6/rapSec/60*(2*pi*r)*3.6,Cmoteur*rapSec*rap6);
+legend("1ère","2ème","3ème","4ème","5ème","6ème")
+xlabel("Vitesse (km/h)")
+ylabel("Couple à la roue (N.m)")
