@@ -4,7 +4,7 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/Session d'essais premiers reglages LAS - Transpolis 08 06 21/Log RC/rc_8.log");
+filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/FSN/FSN21 - RC Practice 1 MJT (pre SkidPad).log");
 T = readtable(filename);
 
 N = height(T);
