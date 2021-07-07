@@ -4,7 +4,7 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/FSN/FSN21 - RC Practice 1 MJT (pre SkidPad).log");
+filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/FSN21/FSN21 - RC Autocross 2 MJT.log");
 T = readtable(filename);
 
 N = height(T);
@@ -35,6 +35,8 @@ dy = cumtrapz(linspace(0,0.04*(N-1),N),vy);
 
 vz = cumtrapz(linspace(0,0.04*(N-1),N),az);
 dz = cumtrapz(linspace(0,0.04*(N-1),N),vz);
+
+FuelP = table2array(T(1:N,26));
 
 %% Plots de distance
 
@@ -122,3 +124,30 @@ legend("Steering","AccelY5");
 title("Ay vs Steering");
 xlabel("temps (s)")
 
+%% Corrélation de déjaugement
+figure
+plot(time,ay*4,'r');
+hold on;
+plot(time,FuelP,'g');
+legend("ay*4","FuelP");
+ylabel("Accélération y et FuelPressure");
+xlabel("temps (s)")
+
+%% Calcul de la consommation
+Conso_100 = table2array(T(1:N,28));
+distance_adaptee = [];
+for i=1:N
+    if mod(i,5)==0
+        dist = table2array(T(i,56));
+        distance_adaptee(i)=dist;
+        distance_adaptee(i+1)=dist;
+        distance_adaptee(i+2)=dist;
+        distance_adaptee(i+3)=dist;
+        distance_adaptee(i+4)=dist;
+    end
+end
+Total_conso = cumtrapz(distance_adaptee,Conso_100/100);
+Total_conso(end) %Consommation sur le run
+Total_conso(end)/distance_adaptee(end)*100
+
+    
