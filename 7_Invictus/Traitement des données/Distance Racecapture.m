@@ -4,12 +4,12 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/FSN21/FSN21 - RC Autocross 2 MJT.log");
+filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/FSN21/FSN21 - RC Accel 1 MJT.log");
 T = readtable(filename);
 
 N = height(T);
 
-time = (table2array(T(1:N,1))-5383)./1000;
+time = (table2array(T(1:N,1))-table2array(T(1,1)))./1000;
 
 time5 = []; %Table du temps pour les capteurs à 10Hz
 for i = 1:N
@@ -122,6 +122,46 @@ hold on;
 plot(time5,AccelY5,'g');
 legend("Steering","AccelY5");
 title("Ay vs Steering");
+xlabel("temps (s)")
+
+%% Pitch
+
+HRF = table2array(T(1:N,5));
+HLF = table2array(T(1:N,6));
+HLR = table2array(T(1:N,7));
+HRR = table2array(T(1:N,8));
+
+for i = 1:N
+    if mod(i,5) == 0
+        HRF(i-4) = HRF(i);
+        HRF(i-3) = HRF(i);
+        HRF(i-2) = HRF(i);
+        HRF(i-1) = HRF(i);
+        HLF(i-4) = HLF(i);
+        HLF(i-3) = HLF(i);
+        HLF(i-2) = HLF(i);
+        HLF(i-1) = HLF(i);
+        HRR(i-4) = HRR(i);
+        HRR(i-3) = HRR(i);
+        HRR(i-2) = HRR(i);
+        HRR(i-1) = HRR(i);
+        HLR(i-4) = HLR(i);
+        HLR(i-3) = HLR(i);
+        HLR(i-2) = HLR(i);
+        HLR(i-1) = HLR(i);
+    end
+end
+    
+figure
+plot(time,HRF,'r');
+hold on;
+plot(time,HLF,'r--');
+hold on;
+plot(time,HRR,'g');
+hold on;
+plot(time,HLR,'g--');
+legend("Height RF","Height LF","Height RR","Height LR");
+ylabel("débattement capteur (mm)");
 xlabel("temps (s)")
 
 %% Corrélation de déjaugement
