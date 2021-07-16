@@ -4,7 +4,7 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf("/Users/bacs/Downloads/wetransfer-6cfa65/16 07 21 Valbonne - log accel TLS.log");
+filename = sprintf("/Users/bacs/Downloads/16 07 21 Valbonne - Accel TLS 2.log");
 T = readtable(filename);
 
 N = height(T);
@@ -166,7 +166,7 @@ xlabel("temps (s)")
 
 %% Corrélation de déjaugement
 figure
-plot(time,ay*4,'r');
+plot(time,ax*4,'r');
 hold on;
 plot(time,FuelP,'g');
 legend("ay*4","FuelP");
