@@ -4,7 +4,7 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/FSN21/FSN21 - RC Accel 1 MJT.log");
+filename = sprintf("/Users/bacs/Downloads/wetransfer-6cfa65/16 07 21 Valbonne - log accel TLS.log");
 T = readtable(filename);
 
 N = height(T);
@@ -190,4 +190,13 @@ Total_conso = cumtrapz(distance_adaptee,Conso_100/100);
 Total_conso(end) %Consommation sur le run
 Total_conso(end)/distance_adaptee(end)*100
 
-    
+%% Temps
+
+sector = table2array(T(1:N,52));
+sector5 = []; %Table du temps pour les capteurs à 10Hz
+for i = 1:N
+    if mod(i,5) == 0
+        sector5(end+1) = time(i);
+    end
+end
+plot(sector5)
