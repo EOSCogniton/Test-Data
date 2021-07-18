@@ -4,7 +4,7 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf("/Users/bacs/Downloads/16 07 21 Valbonne - Accel TLS 2.log");
+filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/Session d'essais Reglages Accel - Valbonne 16 07 21/16 07 21 Valbonne - Accel TLS 2.log");
 T = readtable(filename);
 
 N = height(T);
@@ -37,6 +37,8 @@ vz = cumtrapz(linspace(0,0.04*(N-1),N),az);
 dz = cumtrapz(linspace(0,0.04*(N-1),N),vz);
 
 FuelP = table2array(T(1:N,26));
+RPM = table2array(T(1:N,19));
+
 
 %% Plots de distance
 
@@ -44,8 +46,8 @@ plot(time,ax,'r');
 hold on;
 plot(time,ay,'g');
 hold on;
-plot(time,az,'b');
-legend("ax","ay","az");
+plot(time,RPM/10000,'k');
+legend("ax","ay","RPM");
 ylabel("acceleration (g ?)");
 xlabel("temps (s)")
 
@@ -53,9 +55,7 @@ figure
 plot(time,vx,'r');
 hold on;
 plot(time,vy,'g');
-hold on;
-plot(time,vz,'b');
-legend("vx","vy","vz");
+legend("vx","vy");
 ylabel("vitesse (m/s)");
 xlabel("temps (s)")
 
@@ -63,9 +63,7 @@ figure
 plot(time,dx,'r');
 hold on;
 plot(time,dy,'g');
-hold on;
-plot(time,dz,'b');
-legend("dx","dy","dz");
+legend("dx","dy");
 ylabel("position (m)");
 xlabel("temps (s)")
 
