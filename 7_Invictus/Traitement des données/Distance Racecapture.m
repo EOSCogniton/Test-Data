@@ -4,7 +4,7 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/Session d'essais Reglages Accel - Valbonne 16 07 21/16 07 21 Valbonne - Accel TLS 2.log");
+filename = sprintf("/Volumes/NO NAME/22 07 21 Transpolis - Endurance 1 - Run 1 MKI.log");
 T = readtable(filename);
 
 N = height(T);
@@ -164,7 +164,7 @@ xlabel("temps (s)")
 
 %% Corrélation de déjaugement
 figure
-plot(time,ax*4,'r');
+plot(time,ay*4,'r');
 hold on;
 plot(time,FuelP,'g');
 legend("ay*4","FuelP");
