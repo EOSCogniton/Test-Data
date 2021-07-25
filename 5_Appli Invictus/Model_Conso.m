@@ -30,6 +30,6 @@ inj_fe = zeros(1,N);
 for k = 2:N
     a = floor(2*log_tours(k-1));
     b = floor(2*log_tours(k));
-    inj_fe(k) = (b-a)*log_inj(k);
+    inj_fe(k) = (b-a)*(log_inj(k)-1.1); %le 1.1 est le temps mort injecteur (à prendre en compte ?)
 end
 end
