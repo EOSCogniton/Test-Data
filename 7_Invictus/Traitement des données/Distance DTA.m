@@ -2,7 +2,7 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf('/Users/bacs/Downloads/7_Invictus/Session roulage Fiabilite - Transpolis 09 04 21/DTA/Transpolis 09 04 21 - Run 6 MJT.Dat');
+filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/Session d'essais St Priest 17 07 2021/17 07 21 5 Endurance MKI.Dat");
 T = readtable(filename); 
 
 N = height(T);
@@ -56,6 +56,4 @@ rpds = table2array(T(1:N,3))/60*tau; %tours par déciseconde (0,1s)
 
 inj = inj .* rpds * 2; %temps d'injection par ds en ms
 total_inj = sum(inj)/1000*3.87/1000
-
-
 
