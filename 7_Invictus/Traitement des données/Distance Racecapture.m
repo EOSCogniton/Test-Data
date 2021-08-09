@@ -4,7 +4,7 @@ close all;
 clear all;
 
 dist_total_cap = 0;
-filename = sprintf("/Volumes/NO NAME/22 07 21 Transpolis - Endurance 1 - Run 1 MKI.log");
+filename = sprintf("/Users/bacs/Documents (non iCloud)/EPSA (non iCloud)/Test-Data/7_Invictus/FSA21/FSA21 - Endurance 1 MKI - Sucess.log");
 T = readtable(filename);
 
 N = height(T);
@@ -174,7 +174,7 @@ xlabel("temps (s)")
 %% Calcul de la consommation
 Conso_100 = table2array(T(1:N,28));
 distance_adaptee = [];
-for i=1:N
+for i=0:N
     if mod(i,5)==0
         dist = table2array(T(i,56));
         distance_adaptee(i)=dist;
